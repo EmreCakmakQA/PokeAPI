@@ -45,10 +45,13 @@ function displayData(data) {
 
     // Storing DOM elements as variables
     let name = document.querySelector("h1#name");
-    let height = document.querySelector("h4#height");
-    let weight = document.querySelector("h4#weight")
+    let height = document.querySelector("h6#height");
+    let weight = document.querySelector("h6#weight")
     let moves = document.querySelector("div#moves");
     let noOfMoves = document.querySelector("h5#noOfMoves");
+    let pokemonType = document.querySelector("div#pokemonType");
+
+    // Pics
     let pic = document.querySelector("img#pic");
     let backPic = document.querySelector("img#backPic");
     let shinyPic = document.querySelector("img#shinyPic");
@@ -67,11 +70,18 @@ function displayData(data) {
     noOfMoves.innerText = `${data.name} can learn ` + data.moves.length + ` moves`;
 
 
+
     // Creating DOM element for each pokemon move and appending to div
     for (let i = 0; i < data.moves.length; i++) {
         let listItem = document.createElement("p");
         listItem.innerText = data.moves[i].move.name;
         moves.appendChild(listItem);
+    }
+
+    for (let i = 0; i < data.types.length; i++) {
+        let pokeType = document.createElement("p");
+        pokeType.innerText = data.types[i].type.name;
+        pokemonType.appendChild(pokeType);
     }
 
 

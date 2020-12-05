@@ -13,19 +13,25 @@
 </head>
 
 <body>
+    <!-- Pokemon Logo, Search Bar + Button  -->
     <div class="container" id="headContainer">
         <div id="pokemonLogo"><img src="./pics/pokemonLogo.png" alt="pokemon logo"></div>
         <br>
         <div class="input-group mb-3">
             <input id="searchBar" type="text" class="form-control" placeholder="Enter a Pokemon's name">
-            <button id="searchBtn" class="btn btn-danger">Search</button>
+            <div class="input-group-append">
+                <button id="searchBtn" class="btn btn-danger">Search</button>
+            </div>
         </div>
     </div>
 
+    <!-- Error Text  -->
     <div id="error" class="alert alert-danger"></div>
 
+    <!-- Main Body -->
     <div class="container" id="bodyContainer">
         <h1 id="name"></h1>
+        <!-- Pokemon Image Carousel -->
         <div id="pokePics">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -54,17 +60,21 @@
                 </a>
             </div>
         </div>
+        <br>
+        <!-- Pokemon Info -->
         <div class="container" id="sizeInfo">
             <div class="row">
                 <div class="col-sm">
-                    <h4 id="height"></h4>
+                    <h6 id="height"></h6>
                 </div>
                 <div class="col-sm">
-                    <h4 id="weight"></h4>
+                    <h6 id="weight"></h6>
                 </div>
             </div>
         </div>
 
+        <div class="container" id="pokemonType">
+        </div>
 
         <br>
         <div id="moves">

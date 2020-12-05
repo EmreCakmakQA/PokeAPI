@@ -9,14 +9,18 @@ body{
         
 }
 
+#pokemonLogo img{
+    max-width: 100%;
+    height: auto;
+}
+
 #name{
     text-align: center;
     text-transform: capitalize;
     padding: 10px;
     margin: 20px;
     font-size: 2.5rem;
-    /* border: white 2px dashed;
-    border-radius: 10px; */
+    
 }
 
 #pokePics{
@@ -24,7 +28,7 @@ body{
     margin: auto;
     background-color: white;
     border-radius: 10px;
-    max-width: 50%;
+    max-width: 40%;
     height: auto;
     
 }
