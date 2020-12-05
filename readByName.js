@@ -54,7 +54,7 @@ function displayData(data) {
     let shinyPic = document.querySelector("img#shinyPic");
 
     // Setting the image element sources to display pics
-    pic.src = data.sprites.other.dream_world.front_default;
+    pic.src = data.sprites.other["official-artwork"].front_default;
     backPic.src = data.sprites.back_default;
     shinyPic.src = data.sprites.front_shiny;
 
