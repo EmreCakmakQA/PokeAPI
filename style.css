@@ -64,3 +64,57 @@ body{
 }
 
 
+.btn-fire{
+    background-color: red;
+}
+.btn-rock{
+    background-color: brown;
+}
+.btn-electric{
+    background-color: yellow;
+}
+.btn-water{
+    background-color: blue;
+}
+.btn-dragon{
+    background-color: purple;
+}
+.btn-poison{
+    background-color: rebeccapurple;
+}
+.btn-fairy{
+    background-color: pink;
+}
+.btn-grass{
+    background-color: green;
+}
+.btn-steel{
+    background-color: gray;
+}
+.btn-dark{
+    background-color: darkslategrey;
+}
+.btn-ghost{
+    background-color: palevioletred;
+}
+.btn-ice{
+    background-color: cyan;
+}
+.btn-flying{
+    background-color: powderblue;
+}
+.btn-fighting{
+    background-color: burlywood;
+}
+.btn-normal{
+    background-color: silver;
+}
+.btn-ground{
+    background-color: beige;
+}
+.btn-psychic{
+    background-color: plum;
+}
+.btn-bug{
+    background-color: lightgreen;
+}
