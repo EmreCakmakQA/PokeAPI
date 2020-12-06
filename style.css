@@ -64,6 +64,15 @@ body{
 }
 
 
+.btn {
+    color: white;
+    border-radius: 25px;
+    border: white 1px solid;
+    text-transform: uppercase;
+    text-align: justify;
+    margin: 8px;
+    box-shadow: 2px 2px 5px white;
+}
 .btn-fire{
     background-color: red;
 }
