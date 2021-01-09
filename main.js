@@ -1,14 +1,15 @@
-// Global variables;
+// Global Variables;
 let searchBar = document.querySelector("input#searchBar");
 let searchBtn = document.querySelector("button#searchBtn");
 searchBtn.addEventListener("click", getData);
 
 
-// Obtains user input and displays corresponding pokemon in body
+// Obtains User Input And Displays Corresponding Pokemon In Body
 function getData() {
     let pokeName = searchBar.value;
     let pokemonName = pokeName.toLowerCase();
     document.querySelector("div#pokemonType").innerText = '';
+    document.querySelector("div#statsDiv").innerText = '';
     getPokemonByName(pokemonName);
     document.getElementById("error").style.visibility = "hidden";
     document.querySelector("div#bodyContainer").style.visibility = "visible";
@@ -16,7 +17,7 @@ function getData() {
 }
 
 
-// Fetch data from PokeAPI and call displayData()
+// Fetch Data From PokeAPI And Call displayData()
 function getPokemonByName(name) {
     let pokemon = name;
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
@@ -29,7 +30,7 @@ function getPokemonByName(name) {
                     return;
                 }
 
-                // Examine the text in the response
+                // Examine The Text In The Response
                 response.json().then(function (data) {
                     console.log(data);
                     displayData(data);
@@ -42,16 +43,15 @@ function getPokemonByName(name) {
 }
 
 
-// Creates DOM elements and populates it with data from API
+// Creates DOM Elements And Populates It With Data From API
 function displayData(data) {
 
-    // Storing DOM elements as variables
+    // Storing DOM Elements As Variables
     let name = document.querySelector("h1#name");
-    let height = document.querySelector("h6#height");
-    let weight = document.querySelector("h6#weight")
-    let moves = document.querySelector("div#moves");
-    let noOfMoves = document.querySelector("h5#noOfMoves");
+    let height = document.querySelector("p#height");
+    let weight = document.querySelector("p#weight")
     let pokemonType = document.querySelector("div#pokemonType");
+    let statsDiv = document.querySelector("div#statsDiv");
 
     // Pics
     let backPic = document.querySelector("img#backPic");
@@ -59,30 +59,29 @@ function displayData(data) {
     let pic = document.querySelector("img#pic");
     let shinyPic = document.querySelector("img#shinyPic");
 
-    // Setting the image element sources to display pics
+    // Setting The Image Element Sources To Display Pics
     pic.src = data.sprites.other["official-artwork"].front_default;
     frontPic.src = data.sprites.front_default;
     backPic.src = data.sprites.back_default;
     shinyPic.src = data.sprites.front_shiny;
 
-    // Displaying data as text
+    // Displaying Height And Weight
     name.innerText = data.name;
-    let pokemonHeight = data.height / 10; // Displays height as metres;
-    let pokemonWeight = data.weight / 10; // Displays weight as kg;
+    let pokemonHeight = data.height / 10; // Converts To Metres;
+    let pokemonWeight = data.weight / 10; // Converts To KG;
     height.innerText = "Average height: " + pokemonHeight + "m";
     weight.innerText = "Average weight: " + pokemonWeight + "kg";
-    noOfMoves.innerText = `${data.name} can learn ` + data.moves.length + ` moves`;
 
 
-
-    // Creating DOM element for each pokemon move and appending to div
-    for (let i = 0; i < data.moves.length; i++) {
-        let listItem = document.createElement("p");
-        listItem.innerText = data.moves[i].move.name;
-        moves.appendChild(listItem);
+    // Displaying Stats
+    for (let i = 0; i < data.stats.length; i++) {
+        let stat = document.createElement("p")
+        stat.innerText = data.stats[i].stat.name + " : " + data.stats[i].base_stat;
+        statsDiv.appendChild(stat);
     }
 
 
+    // Displaying Pokemon Type
     for (let i = 0; i < data.types.length; i++) {
         let pokeType = document.createElement("p")
         pokeType.innerText = data.types[i].type.name;
@@ -153,6 +152,7 @@ function displayData(data) {
 
 }
 
+// Pokemon Not Found Error Handling
 function displayError(response) {
     let errorDiv = document.getElementById("error");
     errorDiv.innerText = "Try again! " + response + ":Pokemon not found!";
