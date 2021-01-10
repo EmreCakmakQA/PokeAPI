@@ -1,6 +1,7 @@
 body{
     font-family: 'Press Start 2P', cursive;
     padding: 50px;
+    
 }  
 
 #pokemonLogo{
@@ -13,6 +14,34 @@ body{
     max-width: 100%;
     height: auto;
 }
+
+#headContainer{
+    text-align: center;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    margin: 30px auto;
+    padding-top: 20px;
+    
+}
+
+#searchBtn{
+    padding: 5px;
+    border-radius: 10px;
+    line-height: 1vw;
+    padding: 15px;
+    margin: 25px auto 10px;
+}
+
+
+#searchByType{
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
 
 #name{
     text-align: center;
@@ -43,19 +72,15 @@ body{
 }
 
 #sizeInfo{
-    border: white 2px dashed;
+    
     border-radius: 10px;
     padding: 10px;
 }
 
-#moves{
-    border: white 2px dashed;
-    border-radius: 10px;
-    padding: 10px;
-}
 
 #searchBar {
-    padding: 20px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #error{
