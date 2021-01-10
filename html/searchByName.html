@@ -8,15 +8,21 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Pokemon API</title>
 </head>
 
 <body>
 
     <!-- Pokemon Logo -->
-    <div id="pokemonLogo"><img src="./pics/pokemonLogo.png" alt="pokemon logo"></div>
+    <div id="pokemonLogo"><img src="../pics/pokemonLogo.png" alt="pokemon logo"></div>
     <br>
+
+    <!-- Link To Search By Type -->
+    <div class="container">
+        <a href="../html/searchByType.html">Search By Type</a>
+    </div>
+
     <!-- Search Bar + Button  -->
     <div class="container" id="headContainer">
         <div class="row justify-content-md-center">
@@ -33,20 +39,6 @@
     </div>
 
     <br>
-
-    <!-- Search By Pokemon's Type -->
-    <div class="container" id="searchByType">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto">
-                <!-- <p>Search By Type...</p> -->
-                <select class="form-control" id="formOptions">
-                    <option value="search by type">search by type</option>
-                </select>
-            </div>
-        </div>
-
-
-    </div>
 
     <!-- Error Text  -->
     <div id="error" class="alert alert-danger"></div>
@@ -105,7 +97,7 @@
 
         <!-- Pokemon Type -->
         <div class="container" id="pokemonType"></div>
-
+        <br>
         <!-- Pokemon Base Stats -->
         <div class="conatiner" id="statsDiv"></div>
 
@@ -120,7 +112,7 @@
     </div>
 </body>
 
-<script src="./main.js"></script>
+<script src="../js/searchByName.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>

@@ -2,28 +2,6 @@
 let searchBar = document.querySelector("input#searchBar");
 let searchBtn = document.querySelector("button#searchBtn");
 searchBtn.addEventListener("click", getData);
-let formOptions = document.querySelector("select#formOptions")
-formOptions.onchange = getPokemonByType;
-
-// Populate Option Forms With Pokemon Types
-selectFormOptions();
-
-
-
-
-
-
-
-
-// Populates Input Options With Pokemon Types Dynamically From API
-function selectFormOptions() {
-    let typeURLs = [{ "name": "normal", "url": "https://pokeapi.co/api/v2/type/1/" }, { "name": "fighting", "url": "https://pokeapi.co/api/v2/type/2/" }, { "name": "flying", "url": "https://pokeapi.co/api/v2/type/3/" }, { "name": "poison", "url": "https://pokeapi.co/api/v2/type/4/" }, { "name": "ground", "url": "https://pokeapi.co/api/v2/type/5/" }, { "name": "rock", "url": "https://pokeapi.co/api/v2/type/6/" }, { "name": "bug", "url": "https://pokeapi.co/api/v2/type/7/" }, { "name": "ghost", "url": "https://pokeapi.co/api/v2/type/8/" }, { "name": "steel", "url": "https://pokeapi.co/api/v2/type/9/" }, { "name": "fire", "url": "https://pokeapi.co/api/v2/type/10/" }, { "name": "water", "url": "https://pokeapi.co/api/v2/type/11/" }, { "name": "grass", "url": "https://pokeapi.co/api/v2/type/12/" }, { "name": "electric", "url": "https://pokeapi.co/api/v2/type/13/" }, { "name": "psychic", "url": "https://pokeapi.co/api/v2/type/14/" }, { "name": "ice", "url": "https://pokeapi.co/api/v2/type/15/" }, { "name": "dragon", "url": "https://pokeapi.co/api/v2/type/16/" }, { "name": "dark", "url": "https://pokeapi.co/api/v2/type/17/" }, { "name": "fairy", "url": "https://pokeapi.co/api/v2/type/18/" }]
-    for (let i = 0; i < typeURLs.length; i++) {
-        let option = document.createElement("option");
-        option.innerText = typeURLs[i].name;
-        formOptions.appendChild(option);
-    }
-}
 
 
 // Obtains User Input And Displays Corresponding Pokemon In Body
@@ -64,99 +42,6 @@ function getPokemonByName(name) {
         });
 }
 
-
-// Get Pokemon By Type
-function getPokemonByType() {
-    let value = this.value;
-    let url = "";
-    switch (value) {
-        case "normal":
-            url = "https://pokeapi.co/api/v2/type/1/"
-            break;
-        case "fighting":
-            url = "https://pokeapi.co/api/v2/type/2/"
-            break;
-        case "flying":
-            url = "https://pokeapi.co/api/v2/type/3/"
-            break;
-        case "poison":
-            url = "https://pokeapi.co/api/v2/type/4/"
-            break;
-        case "ground":
-            url = "https://pokeapi.co/api/v2/type/5/"
-            break;
-        case "rock":
-            url = "https://pokeapi.co/api/v2/type/6/"
-            break;
-        case "bug":
-            url = "https://pokeapi.co/api/v2/type/7/"
-            break;
-        case "ghost":
-            url = "https://pokeapi.co/api/v2/type/8/"
-            break;
-        case "steel":
-            url = "https://pokeapi.co/api/v2/type/9/"
-            break;
-        case "fire":
-            url = "https://pokeapi.co/api/v2/type/10/"
-            break;
-        case "water":
-            url = "https://pokeapi.co/api/v2/type/11/"
-            break;
-        case "grass":
-            url = "https://pokeapi.co/api/v2/type/12/"
-            break;
-        case "electric":
-            url = "https://pokeapi.co/api/v2/type/13/"
-            break;
-        case "psychic":
-            url = "https://pokeapi.co/api/v2/type/14/"
-            break;
-        case "ice":
-            url = "https://pokeapi.co/api/v2/type/15/"
-            break;
-        case "dragon":
-            url = "https://pokeapi.co/api/v2/type/16/"
-            break;
-        case "dark":
-            url = "https://pokeapi.co/api/v2/type/17/"
-            break;
-        case "fairy":
-            url = "https://pokeapi.co/api/v2/type/18/"
-            break;
-        default:
-            break;
-    }
-
-    fetch(url)
-        .then(
-            function (response) {
-                if (response.status !== 200) {
-                    console.log('Looks like there was a problem. Status Code: ' +
-                        response.status);
-                    displayError(response.status);
-                    return;
-                }
-
-                // Examine The Text In The Response
-                response.json().then(function (data) {
-
-                    console.log(data.pokemon[0].pokemon.name)
-
-                    for (let i = 0; i < data.pokemon.length; i++) {
-                        console.log(data.pokemon[i].pokemon.name)
-                    }
-
-                });
-            }
-        )
-        .catch(function (err) {
-            console.log('Fetch Error :-S', err);
-        });
-}
-
-
-
 // Creates DOM Elements And Populates It With Data From API
 function displayData(data) {
 
@@ -185,7 +70,6 @@ function displayData(data) {
     let pokemonWeight = data.weight / 10; // Converts To KG;
     height.innerText = "Average height: " + pokemonHeight + "m";
     weight.innerText = "Average weight: " + pokemonWeight + "kg";
-
 
     // Displaying Stats
     for (let i = 0; i < data.stats.length; i++) {
@@ -259,19 +143,7 @@ function displayData(data) {
         }
         pokemonType.appendChild(pokeType);
     }
-
-
-
-
-
-
-
-
-
-
 }
-
-
 
 // Pokemon Not Found Error Handling
 function displayError(response) {
@@ -279,7 +151,6 @@ function displayError(response) {
     errorDiv.innerText = "Try again! " + response + ":Pokemon not found!";
     document.querySelector("div#bodyContainer").style.visibility = "hidden";
     errorDiv.style.visibility = "visible";
-
 }
 
 
