@@ -1,6 +1,3 @@
-let transferPokemon = "";
-
-
 // Populate Option Forms With Pokemon Types
 let formOptions = document.querySelector("select#formOptions")
 formOptions.onchange = getPokemonByType;
@@ -94,10 +91,9 @@ function getPokemonByType() {
                 // Examine The Text In The Response
                 response.json().then(function (data) {
 
-                    console.log(data.pokemon[0].pokemon.name)
                     let div = document.querySelector("div#test");
+                    div.innerText = ''
                     let ul = document.createElement("ul");
-
 
 
                     for (let i = 0; i < data.pokemon.length; i++) {
@@ -105,20 +101,42 @@ function getPokemonByType() {
                         let li = document.createElement("li");
                         let a = document.createElement("a");
 
-                        a.innerText = data.pokemon[i].pokemon.name;
+                        let pName = data.pokemon[i].pokemon.name;
+                        a.innerText = pName
 
+                        // Clicking the pokemon's name in the list fetch's the pokemon,
+                        // and logs the object to the console
                         a.onclick = () => {
-                            div.innerText = '';
-                            pName = data.pokemon[i].pokemon.name;
-                            getPokemonByName(pName);
+
+                            fetch(`https://pokeapi.co/api/v2/pokemon/${pName}`)
+                                .then(
+                                    function (response) {
+                                        if (response.status !== 200) {
+                                            console.log('Looks like there was a problem. Status Code: ' +
+                                                response.status);
+                                            displayError(response.status);
+                                            return;
+                                        }
+
+                                        // Examine The Text In The Response
+                                        response.json().then(function (data) {
+                                            console.log(data);
+
+                                        });
+                                    }
+                                )
+                                .catch(function (err) {
+                                    console.log('Fetch Error :-S', err);
+                                });
+
                         }
+
 
 
                         li.appendChild(a);
                         ul.appendChild(li);
                     }
 
-                    div.style.visibility = "visible";
                     div.appendChild(ul)
 
                 });
