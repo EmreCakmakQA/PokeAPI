@@ -1,3 +1,6 @@
+let transferPokemon = "";
+
+
 // Populate Option Forms With Pokemon Types
 let formOptions = document.querySelector("select#formOptions")
 formOptions.onchange = getPokemonByType;
@@ -92,14 +95,26 @@ function getPokemonByType() {
                 response.json().then(function (data) {
 
                     console.log(data.pokemon[0].pokemon.name)
-                    let div = document.querySelector("div#bodyContainer");
+                    let div = document.querySelector("div#test");
                     let ul = document.createElement("ul");
 
 
 
                     for (let i = 0; i < data.pokemon.length; i++) {
+
                         let li = document.createElement("li");
-                        li.innerText = data.pokemon[i].pokemon.name;
+                        let a = document.createElement("a");
+
+                        a.innerText = data.pokemon[i].pokemon.name;
+
+                        a.onclick = () => {
+                            div.innerText = '';
+                            pName = data.pokemon[i].pokemon.name;
+                            getPokemonByName(pName);
+                        }
+
+
+                        li.appendChild(a);
                         ul.appendChild(li);
                     }
 
@@ -113,3 +128,4 @@ function getPokemonByType() {
             console.log('Fetch Error :-S', err);
         });
 }
+

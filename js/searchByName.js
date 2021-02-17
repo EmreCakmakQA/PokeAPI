@@ -4,6 +4,7 @@ let searchBtn = document.querySelector("button#searchBtn");
 searchBtn.addEventListener("click", getData);
 
 
+
 // Obtains User Input And Displays Corresponding Pokemon In Body
 function getData() {
     let pokeName = searchBar.value;
@@ -152,8 +153,6 @@ function displayError(response) {
     document.querySelector("div#bodyContainer").style.visibility = "hidden";
     errorDiv.style.visibility = "visible";
 }
-
-
 
 
 
